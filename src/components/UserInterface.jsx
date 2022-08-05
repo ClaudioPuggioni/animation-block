@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
 
 export default function UserInterface() {
-  let boxRef = useRef(null);
-  let boxContainerRef = useRef(null);
   let scrollBarRef = useRef(null);
   const [xBox, setXBox] = useState(0);
   const [yBox, setYBox] = useState(0);
@@ -12,11 +10,6 @@ export default function UserInterface() {
   const [rotateDot, setRotateDot] = useState(0);
 
   function handleDrag(e, type) {
-    console.log("x", e.clientX);
-    console.log("boxContainer", boxContainerRef.current.getBoundingClientRect());
-    console.log("box", boxRef.current.getBoundingClientRect());
-    console.log("bar", scrollBarRef.current.getBoundingClientRect());
-
     let barStats = scrollBarRef.current.getBoundingClientRect();
     e.preventDefault();
     let xPos = e.clientX - barStats.left > 240 ? 240 : e.clientX - barStats.left <= 0 ? 0 : e.clientX - barStats.left;
@@ -38,8 +31,8 @@ export default function UserInterface() {
   return (
     <div id="container">
       <div id="appContainer">
-        <div ref={boxContainerRef} id="boxContainer">
-          <div ref={boxRef} id="box" style={{ top: `${yBox}px`, left: `${xBox}px`, transform: `rotate(${rotateBox}deg)` }}>
+        <div id="boxContainer">
+          <div id="box" style={{ top: `${yBox}px`, left: `${xBox}px`, transform: `rotate(${rotateBox}deg)` }}>
             {/* ⚫ */}
           </div>
         </div>
