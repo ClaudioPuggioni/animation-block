@@ -17,8 +17,6 @@ export default function UserInterface() {
     console.log("box", boxRef.current.getBoundingClientRect());
     console.log("bar", scrollBarRef.current.getBoundingClientRect());
 
-    let boxContainerStats = boxContainerRef.current.getBoundingClientRect();
-    let boxStats = boxRef.current.getBoundingClientRect();
     let barStats = scrollBarRef.current.getBoundingClientRect();
     e.preventDefault();
     let xPos = e.clientX - barStats.left > 240 ? 240 : e.clientX - barStats.left <= 0 ? 0 : e.clientX - barStats.left;
@@ -30,9 +28,7 @@ export default function UserInterface() {
         let yPos = (e.clientX - barStats.left) * 1.68 > 400.08 ? 400.08 : (e.clientX - barStats.left) * 1.68 <= 0 ? 0 : (e.clientX - barStats.left) * 1.68;
         setYBox(yPos);
         setYDot(xPos);
-        // setY(e.clientX);
       } else if (type === "typeRotate") {
-        // setRotate(e.clientX);
         setRotateBox(xPos * 1.5);
         setRotateDot(xPos);
       }
