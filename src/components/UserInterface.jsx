@@ -18,7 +18,8 @@ export default function UserInterface() {
         setXBox(xPos * 1.667);
         setXDot(xPos);
       } else if (type === "typeY") {
-        let yPos = (e.clientX - barStats.left) * 1.68 > 400.08 ? 400.08 : (e.clientX - barStats.left) * 1.68 <= 0 ? 0 : (e.clientX - barStats.left) * 1.68;
+        let yPos =
+          (e.clientX - barStats.left) * 1.68 > 400.08 ? 400.08 : (e.clientX - barStats.left) * 1.68 <= 0 ? 0 : (e.clientX - barStats.left) * 1.68;
         setYBox(yPos);
         setYDot(xPos);
       } else if (type === "typeRotate") {
@@ -38,21 +39,21 @@ export default function UserInterface() {
         </div>
         <div id="controls">
           <div id="xDiv">
-            <div className="stats">X ({xBox})</div>
+            <div className="stats">X {Math.round(xBox)}</div>
             <div ref={scrollBarRef} id="scrollBarX">
               <div id="scrollFillX"></div>
               <div id="scrollDotX" draggable="true" onDrag={(e) => handleDrag(e, "typeX")} style={{ left: `${xDot}px` }}></div>
             </div>
           </div>
           <div id="yDiv">
-            <div className="stats">Y ({yBox})</div>
+            <div className="stats">Y {Math.round(yBox)}</div>
             <div id="scrollBarY">
               <div id="scrollFillY"></div>
               <div id="scrollDotY" draggable="true" onDrag={(e) => handleDrag(e, "typeY")} style={{ left: `${yDot}px` }}></div>
             </div>
           </div>
           <div id="rotateDiv">
-            <div className="stats">Rotate ({rotateBox})</div>
+            <div className="stats">Rotate {Math.round(rotateBox)}</div>
             <div id="scrollBarRotate">
               <div id="scrollFillRotate"></div>
               <div id="scrollDotRotate" draggable="true" onDrag={(e) => handleDrag(e, "typeRotate")} style={{ left: `${rotateDot}px` }}></div>
